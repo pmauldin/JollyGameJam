@@ -52,3 +52,6 @@ Icon?
 ehthumbs.db
 Thumbs.db
 pcbuild_Data/
+ProjectSettings/ClusterInputManager.asset
+ProjectSettings/UnityAdsSettings.asset
+ProjectSettings/UnityConnectSettings.asset
