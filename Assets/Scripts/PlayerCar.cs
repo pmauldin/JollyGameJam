@@ -9,7 +9,7 @@ public class PlayerCar : MonoBehaviour {
 	public float initialVelocity = 100;
 	Vector3 velocity;
 
-	boolean jumping = false;
+	bool jumping = false;
 
 	// Use this for initialization
 	void Start () {
