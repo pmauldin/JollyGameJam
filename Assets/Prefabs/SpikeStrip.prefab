@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 495240}
   - 212: {fileID: 21284234}
+  - 114: {fileID: 11473000}
   m_Layer: 0
   m_Name: SpikeStrip
   m_TagString: Untagged
@@ -23,11 +24,25 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.656, y: 0.808851, z: 0.697}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11473000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01197a4722d4400ca5bfb2a6ed55510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VelocitySlow: 0.75
+  AccelSlow: 0.75
+  AccelSlowDuration: 3
 --- !u!212 &21284234
 SpriteRenderer:
   m_ObjectHideFlags: 1
