@@ -385,7 +385,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 449394, guid: 975d324522120438a8554c00121fa6cd, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.764
       objectReference: {fileID: 0}
     - target: {fileID: 449394, guid: 975d324522120438a8554c00121fa6cd, type: 2}
       propertyPath: m_LocalRotation.x
@@ -512,4 +512,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
