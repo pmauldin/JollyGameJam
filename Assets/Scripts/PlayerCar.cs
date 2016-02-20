@@ -6,11 +6,14 @@ public class PlayerCar : MonoBehaviour {
 
 	public float acceleration = 9;
 	public float sideSpeed = 100;
-	Vector3 velocity = new Vector3(0, -1000, 0);
+	public float initialVelocity = 100;
+	Vector3 velocity;
+
+	boolean jumping = false;
 
 	// Use this for initialization
 	void Start () {
-	
+		velocity = new Vector3(0, -initialVelocity, 0);
 	}
 	
 	// Update is called once per frame
@@ -21,6 +24,12 @@ public class PlayerCar : MonoBehaviour {
 			velocity.x = -sideSpeed;
 		} else {
 			velocity.x = 0;
+		}
+
+		if (Input.GetKey(KeyCode.UpArrow) && !jumping) {
+			jumping = true;
+
+
 		}
 
 		if (transform.position.z < -4000) {
