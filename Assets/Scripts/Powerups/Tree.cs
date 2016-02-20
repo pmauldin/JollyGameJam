@@ -3,29 +3,26 @@ using System.Collections;
 
 public class Tree : MonoBehaviour {
 
+	public float VelocitySlow = 0f;
+	public float AccelSlow = 0.75f;
+	public float AccelSlowDuration = 3.0f;
+
 	// Use this for initialization
-	ChangeCarVelocity ccv = new ChangeCarVelocity ();
-	void Start () { 
+	void Start () {
+	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log ("Update");
 	
-	}
-
-	void FixedUpdate()
-	{
-		
 	}
 
 	void OnCollisionEnter(Collision col)
 	{
-		Debug.Log (col.gameObject.tag);
 		if (col.gameObject.tag == "Car")
 		{
-			//ccv.setVelocity (0);
-			Debug.Log("Collision with Tree");
+			var obj = col.gameObject.GetComponent<PlayerCar> ();
+			obj.velocity = obj.velocity*VelocitySlow;
 		}
 	}
 }
