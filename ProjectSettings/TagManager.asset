@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Car
+  - Powerup_Spikestrip
+  - Powerup_Tree
   layers:
   - Default
   - TransparentFX
