@@ -8,20 +8,23 @@ public class PlayerCar : MonoBehaviour {
 	public float acceleration;
 	public float sideSpeed = 3;
 	public float initialVelocity = 0.5f;
-	public float maxJumpHeight = 0.6f;
-	public float jumpSpeed = 0.01f;
 	public Vector3 velocity;
 	public bool loop = true;
 	Vector3 initialPos;
-	int jumpDirection = 1;
 
 	float timeRemainingLimit = -1;
 
+	public float maxJumpHeight = 0.6f;
+	public float jumpSpeed = 0.01f;
+	int jumpDirection = 1;
 	bool jumping = false;
+
+	Animation animation; 
 
 	// Use this for initialization
 	void Start () {
 		transform = GetComponentInParent<Transform> ();
+		this.animation = GetComponentInParent<Animation> ();
 		acceleration = initialAcceleration;
 		velocity = new Vector3(0, 0, -initialVelocity);
 		initialPos = transform.position;
@@ -35,6 +38,7 @@ public class PlayerCar : MonoBehaviour {
 
 		if (jumping && transform.position.y < initialPos.y) {
 			jumping = false;
+			this.animation.Play ("wobble");
 			Vector3 pos = transform.position;
 			pos.y = initialPos.y;
 			transform.position = pos;
