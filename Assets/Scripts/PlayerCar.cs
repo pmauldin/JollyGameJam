@@ -19,6 +19,7 @@ public class PlayerCar : MonoBehaviour {
 	void Start () {
 		velocity = new Vector3(0, -initialVelocity, 0);
 		initialPos = transform.position;
+		Debug.Log("initialPos: " + initialPos);
 	}
 	
 	// Update is called once per frame
@@ -36,7 +37,7 @@ public class PlayerCar : MonoBehaviour {
 			jumpDirection = 1;
 		}
 
-		if (jumping && transform.position.y <= initialPos.y) {
+		if (jumping && transform.position.y < initialPos.y) {
 			jumping = false;
 			Vector3 pos = transform.position;
 			pos.y = initialPos.y;
@@ -53,14 +54,16 @@ public class PlayerCar : MonoBehaviour {
 	void FixedUpdate() {
 		velocity.y -= acceleration;
 		transform.Translate (velocity.x * Time.deltaTime, velocity.y * Time.deltaTime, velocity.z * Time.deltaTime);
-		Debug.Log ("Velocity is " + velocity);
+		Debug.Log ("Jumping: " + jumping);
 
 		if (jumping) {
 			if (jumpDirection == 1 && transform.position.y >= initialPos.y + maxJumpHeight) {
 				jumpDirection = -1;
 			}
 
-
+			Vector3 pos = transform.position;
+			pos.y += jumpDirection * jumpSpeed * Time.deltaTime;
+			transform.position = pos;
 		}
 	}
 }
