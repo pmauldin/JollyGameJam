@@ -4,8 +4,8 @@ using System.Collections;
 public class Tree : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
-	
+	ChangeCarVelocity ccv = new ChangeCarVelocity ();
+	void Start () { 
 	}
 	
 	// Update is called once per frame
@@ -21,11 +21,10 @@ public class Tree : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col)
 	{
-		Debug.Log (col.gameObject);
-		if (col.gameObject.tag == "Player")
+		Debug.Log (col.gameObject.tag);
+		if (col.gameObject.tag == "Car")
 		{
-			var obj = col.gameObject;
-			// obj.GetComponent<PlayerCar> ().setVelocity (0.75);
+			//ccv.setVelocity (0);
 			Debug.Log("Collision with Tree");
 		}
 	}
