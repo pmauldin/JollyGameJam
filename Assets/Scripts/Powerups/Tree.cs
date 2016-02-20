@@ -21,7 +21,7 @@ public class Tree : MonoBehaviour {
 	{
 		if (col.gameObject.tag == "Car")
 		{
-			var obj = col.gameObject.GetComponent<ChangeCarVelocity> ();
+			var obj = col.gameObject.GetComponent<PlayerCar> ();
 			obj.setVelocity(VelocitySlow);
 		}
 	}

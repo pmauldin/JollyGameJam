@@ -15,6 +15,8 @@ public class PlayerCar : MonoBehaviour {
 	Vector3 initialPos;
 	int jumpDirection = 1;
 
+	float timeRemainingLimit = -1;
+
 	bool jumping = false;
 
 	// Use this for initialization
@@ -29,6 +31,7 @@ public class PlayerCar : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		handleInput (); 
+		handleAccelTime ();
 
 		if (jumping && transform.position.y < initialPos.y) {
 			jumping = false;
@@ -76,5 +79,33 @@ public class PlayerCar : MonoBehaviour {
 		Vector3 pos = transform.position;
 		pos.y += jumpDirection * jumpSpeed * Time.deltaTime;
 		transform.position = pos;
+	}
+
+	void handleAccelTime() {
+		if(timeRemainingLimit > -1){
+
+			if(timeRemainingLimit > 0){
+				timeRemainingLimit -= 1;
+			}
+			else{
+				resetAcceleration();
+				timeRemainingLimit = -1;
+			}
+		}
+	}
+
+	public void setVelocity(float velocity){
+		this.velocity.z *= velocity;
+	}
+
+	public void setAcceleration(float acceleration, float timeLimit ){ 
+		acceleration *= acceleration;
+		timeRemainingLimit = timeLimit;
+
+	}
+
+	public void resetAcceleration(){ 
+		acceleration = initialAcceleration;
+
 	}
 }

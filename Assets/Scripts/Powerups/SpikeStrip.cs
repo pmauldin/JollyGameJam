@@ -24,10 +24,9 @@ public class SpikeStrip : MonoBehaviour {
 
 	public void OnCollisionEnter(Collision col)
 	{
-		Debug.Log (col.gameObject.tag);
 		if (col.gameObject.tag == "Car")
 		{
-			var obj = col.gameObject.GetComponent<ChangeCarVelocity> ();
+			var obj = col.gameObject.GetComponent<PlayerCar> ();
 			obj.setVelocity(VelocitySlow);
 			Debug.Log ("Spikes");
 		}
