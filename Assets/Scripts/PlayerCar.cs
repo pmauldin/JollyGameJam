@@ -10,6 +10,7 @@ public class PlayerCar : MonoBehaviour {
 	public float maxJumpHeight = 0.6f;
 	public float jumpSpeed = 0.01f;
 	public Vector3 velocity;
+	public bool loop = true;
 	Vector3 initialPos;
 	int jumpDirection = 1;
 
@@ -44,7 +45,7 @@ public class PlayerCar : MonoBehaviour {
 			transform.position = pos;
 		}
 
-		if (transform.position.z > 25) {
+		if (loop && transform.position.z > 25) {
 			Vector3 pos = transform.position;
 			pos.z = -36;
 			transform.position = pos;
