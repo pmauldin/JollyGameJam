@@ -10,6 +10,9 @@ GameObject:
   - 4: {fileID: 495240}
   - 212: {fileID: 21284234}
   - 114: {fileID: 11473000}
+  - 65: {fileID: 6585420}
+  - 114: {fileID: 11483774}
+  - 54: {fileID: 5418198}
   m_Layer: 0
   m_Name: SpikeStrip
   m_TagString: Untagged
@@ -24,11 +27,38 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: -2.320012, y: -0.81686234, z: 2.3953056}
+  m_LocalScale: {x: 2, y: 4, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!54 &5418198
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114072}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!65 &6585420
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114072}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.65238726, y: 0.16536248, z: 0.3716962}
+  m_Center: {x: 0.045321584, y: -0.07731879, z: -0.08584595}
 --- !u!114 &11473000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41,6 +71,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VelocitySlow: 0.75
+  AccelSlow: 0.75
+  AccelSlowDuration: 3
+--- !u!114 &11483774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01197a4722d4400ca5bfb2a6ed55510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VelocitySlow: 0
   AccelSlow: 0.75
   AccelSlowDuration: 3
 --- !u!212 &21284234
