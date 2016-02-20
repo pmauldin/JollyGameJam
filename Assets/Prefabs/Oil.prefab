@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 488764}
   - 212: {fileID: 21292796}
+  - 54: {fileID: 5499492}
+  - 65: {fileID: 6550740}
   m_Layer: 0
   m_Name: Oil
   m_TagString: Untagged
@@ -22,12 +24,39 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181060}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.851, y: -1.461, z: 0}
+  m_LocalRotation: {x: 0.7053914, y: 0, z: 0, w: 0.708818}
+  m_LocalPosition: {x: -2.3370123, y: -1.4647365, z: 8.863972}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!54 &5499492
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181060}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!65 &6550740
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &21292796
 SpriteRenderer:
   m_ObjectHideFlags: 1
