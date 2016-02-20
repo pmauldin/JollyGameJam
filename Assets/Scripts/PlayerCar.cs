@@ -4,7 +4,8 @@ using System.Collections;
 public class PlayerCar : MonoBehaviour {
 	public Transform transform;
 
-	public float acceleration = 0.1f;
+	public float initialAcceleration = 0.1f;
+	public float acceleration;
 	public float sideSpeed = 3;
 	public float initialVelocity = 0.5f;
 	public float maxJumpHeight = 0.6f;
@@ -18,7 +19,8 @@ public class PlayerCar : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		velocity = new Vector3(0, -initialVelocity, 0);
+		acceleration = initialAcceleration;
+		velocity = new Vector3(0, 0, -initialVelocity);
 		initialPos = transform.position;
 		Debug.Log("initialPos: " + initialPos);
 	}
@@ -26,9 +28,9 @@ public class PlayerCar : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey(KeyCode.LeftArrow)) {
-			velocity.x = sideSpeed;
-		} else if (Input.GetKey(KeyCode.RightArrow)) {
 			velocity.x = -sideSpeed;
+		} else if (Input.GetKey(KeyCode.RightArrow)) {
+			velocity.x = sideSpeed;
 		} else {
 			velocity.x = 0;
 		}
@@ -53,7 +55,7 @@ public class PlayerCar : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		velocity.y -= acceleration;
+		velocity.z += acceleration;
 		transform.Translate (velocity.x * Time.deltaTime, velocity.y * Time.deltaTime, velocity.z * Time.deltaTime);
 		Debug.Log ("Jumping: " + jumping);
 
