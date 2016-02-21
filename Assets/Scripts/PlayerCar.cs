@@ -78,7 +78,8 @@ public class PlayerCar : MonoBehaviour {
         {
             timeMessage.text = "TIME TO EXPLODE " + timeToExplode;
             timeToExplode -= Time.deltaTime;
-            if (timeToExplode <= 0) ;
+            if (timeToExplode <= 0)
+                Application.LoadLevel("GameOver");
                 
         }
         else {
