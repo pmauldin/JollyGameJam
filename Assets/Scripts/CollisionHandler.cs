@@ -20,6 +20,7 @@ public class CollisionHandler : MonoBehaviour {
 	void Start () {
 		player = GetComponentInParent<PlayerCar> ();
 		this.collisionValues = createDict ();
+        player.mat.SetColor("_Color", Color.white);
         carColor = player.mat.GetColor("_Color");
 	}
 	
@@ -77,6 +78,7 @@ public class CollisionHandler : MonoBehaviour {
 
 		dict.Add ("Tree", getCollisionOptions (0.5f, 1.0f, 0.0f));
 		dict.Add ("SpikeStrip", getCollisionOptions (0.3f, 0.75f, 3.0f));
+        dict.Add("SpeedBoost", getCollisionOptions(1.5f, 1.5f, 1.0f));
 
 		return dict;
 	}
