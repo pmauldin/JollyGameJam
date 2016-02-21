@@ -4,12 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Powerup_Spikestrip
-  - Powerup_Tree
   - Car
   - Tree
   - SpikeStrip
   - FinishLine
+  - BananaPeel
   layers:
   - Default
   - TransparentFX
