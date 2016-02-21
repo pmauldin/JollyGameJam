@@ -22,9 +22,19 @@ public class ScoreKeeper : MonoBehaviour {
 	}
 
 	public void printPlayers() {
-		Debug.Log (players.Count + " players...");
 		players.ForEach ((player) => {
 			player.print();
 		});
+	}
+
+	public List<PlayerStats> getPlayers() {
+		players.Sort (delegate(PlayerStats x, PlayerStats y) {
+			return y.time.CompareTo(x.time);
+		});
+		return players;
+	}
+
+	public int size() {
+		return players.Count;
 	}
 }

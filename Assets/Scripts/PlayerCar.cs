@@ -18,6 +18,7 @@ public class PlayerCar : MonoBehaviour {
 	public float jumpSpeed = 0.01f;
 	int jumpDirection = 1;
 	bool jumping = false;
+	float jumpCooldown = 0;
 
 	public Animation animation; 
 	public bool inputEnabled;
@@ -46,6 +47,7 @@ public class PlayerCar : MonoBehaviour {
 
 		if (jumping && playerTransform.position.y < initialPos.y) {
 			jumping = false;
+			jumpCooldown = 1;
 			Debug.Log (this.animation.name);
 			this.animation.Play ("wobble");
 			Vector3 pos = playerTransform.position;
@@ -67,7 +69,9 @@ public class PlayerCar : MonoBehaviour {
 		velocity.z += acceleration;
 		playerTransform.Translate (velocity.x * Time.deltaTime, velocity.y * Time.deltaTime, velocity.z * Time.deltaTime);
 
-		if (jumping) {
+		if (jumpCooldown > 0) {
+			jumpCooldown -= Time.deltaTime;
+		} else if (jumping) {
 			jump ();
 		}
 	}
