@@ -44,6 +44,7 @@ GameObject:
   - 114: {fileID: 11433486}
   - 54: {fileID: 5448024}
   - 65: {fileID: 6538296}
+  - 114: {fileID: 11447836}
   m_Layer: 0
   m_Name: Car
   m_TagString: Car
@@ -128,6 +129,7 @@ GameObject:
   - 4: {fileID: 451740}
   - 33: {fileID: 3337032}
   - 23: {fileID: 2367074}
+  - 111: {fileID: 11122546}
   m_Layer: 0
   m_Name: CarSprite
   m_TagString: Player
@@ -354,7 +356,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100746}
   m_LocalRotation: {x: 0.0026352347, y: 0.7071018, z: -0.70710194, w: 0.0026352338}
-  m_LocalPosition: {x: 0, y: 0.631, z: -1.455}
+  m_LocalPosition: {x: 0.15, y: 0.86, z: -1.45}
   m_LocalScale: {x: 0.07517786, y: 0.03861969, z: 0.03861969}
   m_Children:
   - {fileID: 454270}
@@ -718,7 +720,7 @@ Light:
   serializedVersion: 6
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.68
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -741,6 +743,21 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!111 &11122546
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152116}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 776d9a80467e9428ba95b7e1ab58e195, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 776d9a80467e9428ba95b7e1ab58e195, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!111 &11150562
 Animation:
   m_ObjectHideFlags: 1
@@ -770,10 +787,21 @@ MonoBehaviour:
   acceleration: 0.1
   sideSpeed: 4
   initialVelocity: 0.5
-  maxJumpHeight: 0.8
-  jumpSpeed: 5
   velocity: {x: 0, y: 0, z: 0}
   loop: 0
+  maxJumpHeight: 0.8
+  jumpSpeed: 5
+--- !u!114 &11447836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6147481016ad841d8beaf0c601e61cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &12452986
 Behaviour:
   m_ObjectHideFlags: 1

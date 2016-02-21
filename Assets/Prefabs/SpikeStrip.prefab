@@ -11,11 +11,10 @@ GameObject:
   - 212: {fileID: 21284234}
   - 114: {fileID: 11473000}
   - 65: {fileID: 6585420}
-  - 114: {fileID: 11483774}
   - 54: {fileID: 5418198}
   m_Layer: 0
   m_Name: SpikeStrip
-  m_TagString: Powerup_Spikestrip
+  m_TagString: SpikeStrip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalPosition: {x: 0.131, y: -0.81686234, z: 51.17}
   m_LocalScale: {x: 2, y: 4, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -71,20 +70,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VelocitySlow: 0.75
-  AccelSlow: 0.75
-  AccelSlowDuration: 3
---- !u!114 &11483774
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c01197a4722d4400ca5bfb2a6ed55510, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VelocitySlow: 0
   AccelSlow: 0.75
   AccelSlowDuration: 3
 --- !u!212 &21284234

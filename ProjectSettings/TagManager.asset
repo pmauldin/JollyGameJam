@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Powerup_Spikestrip
   - Powerup_Tree
+  - Car
+  - Tree
+  - SpikeStrip
   layers:
   - Default
   - TransparentFX

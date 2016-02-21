@@ -38,7 +38,7 @@ public class PlayerCar : MonoBehaviour {
 
 		if (jumping && transform.position.y < initialPos.y) {
 			jumping = false;
-			this.animation.Play ("wobble");
+//			this.animation.Play ("wobble");
 			Vector3 pos = transform.position;
 			pos.y = initialPos.y;
 			transform.position = pos;
@@ -99,6 +99,7 @@ public class PlayerCar : MonoBehaviour {
 	}
 
 	public void setVelocity(float velocity){
+//		Debug.Log (this.velocity.z + " * " + velocity + " = " + (this.velocity.z * velocity));
 		this.velocity.z *= velocity;
 	}
 
