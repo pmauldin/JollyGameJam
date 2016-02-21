@@ -96,6 +96,7 @@ GameObject:
   - 114: {fileID: 80540862}
   - 222: {fileID: 80540861}
   - 114: {fileID: 80540860}
+  - 114: {fileID: 80540863}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -187,6 +188,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &80540863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 80540858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7311593977d644ca2ab99873fb4883bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &191163793
 GameObject:
   m_ObjectHideFlags: 0

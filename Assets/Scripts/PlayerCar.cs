@@ -22,15 +22,16 @@ public class PlayerCar : MonoBehaviour {
 	public Animation animation; 
 	public bool inputEnabled;
 
+	PlayerStats stats;
+
 	// Use this for initialization
 	void Start () {
-		Debug.Log (this.animation.GetClip ("spin").averageDuration);
 		playerTransform = GetComponentInParent<Transform> ();
 		acceleration = initialAcceleration;
 		velocity = new Vector3(0, 0, -initialVelocity);
 		initialPos = playerTransform.position;
 		inputEnabled = true;
-		Debug.Log("initialPos: " + initialPos);
+		stats = GetComponentInParent<PlayerStats> ();
 	}
 	
 	// Update is called once per frame
@@ -105,7 +106,6 @@ public class PlayerCar : MonoBehaviour {
 	}
 
 	public void setVelocity(float velocity){
-//		Debug.Log (this.velocity.z + " * " + velocity + " = " + (this.velocity.z * velocity));
 		this.velocity.z *= velocity;
 	}
 
@@ -117,6 +117,24 @@ public class PlayerCar : MonoBehaviour {
 
 	public void resetAcceleration(){ 
 		acceleration = initialAcceleration;
+	}
 
+	public void updateStats(string obstacle) {
+		switch (obstacle) {
+			case "Tree":
+				stats.numTrees++;
+				break;
+			case "Oil":
+				stats.numOils++;
+				break;
+			case "SpikeStrip":
+				stats.numSpikes++;
+				break;
+			case "Banana":
+				stats.numBananas++;
+				break;
+			default:
+				break;
+		}
 	}
 }

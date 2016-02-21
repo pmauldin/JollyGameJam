@@ -29,6 +29,7 @@ GameObject:
   - 54: {fileID: 5448024}
   - 65: {fileID: 6538296}
   - 114: {fileID: 11447836}
+  - 114: {fileID: 11408786}
   m_Layer: 0
   m_Name: Car
   m_TagString: Car
@@ -224,7 +225,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 1.764}
+  m_LocalPosition: {x: -3.25, y: -2.66, z: -39.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 444724}
@@ -571,6 +572,23 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &11408786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b204ae347b604ac7b0a69087717ea16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  time: 0
+  numTrees: 0
+  numBananas: 0
+  numOils: 0
+  numSpikes: 0
 --- !u!114 &11433486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -582,8 +600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faca54e56e52140c4820473e6a41a55a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialAcceleration: 0.1
-  acceleration: 0.1
+  initialAcceleration: 0.05
+  acceleration: 0.05
   sideSpeed: 4
   initialVelocity: 0.5
   velocity: {x: 0, y: 0, z: 0}
@@ -591,6 +609,7 @@ MonoBehaviour:
   maxJumpHeight: 0.8
   jumpSpeed: 5
   animation: {fileID: 11150562}
+  inputEnabled: 0
 --- !u!114 &11447836
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -59,6 +59,8 @@ public class CollisionHandler : MonoBehaviour {
 			Physics.IgnoreCollision (collider, GetComponentInParent<Collider>());
 		}
 
+		player.updateStats (col.gameObject.tag);
+
 		buffEnabled = true;
 	}
 
@@ -101,7 +103,12 @@ public class CollisionHandler : MonoBehaviour {
 		slipping = true;
 
 		magnitude = player.velocity.magnitude;
-		float randomSpeed = (((float) Random.Range(-2000, 2000)) / 1000) * player.sideSpeed;
+		float randomSpeed = magnitude + 1;
+
+		while (Mathf.Abs (randomSpeed) >= Mathf.Abs (magnitude)) {
+			randomSpeed = (((float) Random.Range(-2000, 2000)) / 1000) * player.sideSpeed;
+		}
+
 		newVector = new Vector3(randomSpeed, 0, Mathf.Sqrt((magnitude * magnitude) - (randomSpeed * randomSpeed)));
 
 		slipTimer = 0;

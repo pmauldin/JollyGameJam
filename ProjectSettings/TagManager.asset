@@ -9,6 +9,8 @@ TagManager:
   - SpikeStrip
   - FinishLine
   - BananaPeel
+  - Oil
+  - ScoreKeeper
   layers:
   - Default
   - TransparentFX
