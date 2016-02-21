@@ -11,6 +11,7 @@ TagManager:
   - BananaPeel
   - Oil
   - ScoreKeeper
+  - Content
   layers:
   - Default
   - TransparentFX
