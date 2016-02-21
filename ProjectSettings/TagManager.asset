@@ -15,6 +15,7 @@ TagManager:
   - Content
   - LeftFence
   - RightFence
+  - SpeedBoost
   layers:
   - Default
   - TransparentFX

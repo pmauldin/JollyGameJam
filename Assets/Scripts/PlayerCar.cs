@@ -41,6 +41,9 @@ public class PlayerCar : MonoBehaviour {
     // material for car
     public Material mat;
 
+    // Timer for Loserboard
+    float time = 0.0f;
+
     // Use this for initialization
     void Start () {
 		playerTransform = GetComponentInParent<Transform> ();
@@ -80,6 +83,7 @@ public class PlayerCar : MonoBehaviour {
 
         handleExplosion();
 
+        time += Time.deltaTime;
 
 
 	}
