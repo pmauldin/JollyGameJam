@@ -7,3 +7,7 @@ function Start_Game_Button () {
 function Main_Menu_Button () {
 	Application.LoadLevel("Menu");
 }
+
+public function Exit_Game () {
+	Application.Quit();
+}
