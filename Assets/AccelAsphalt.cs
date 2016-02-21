@@ -16,7 +16,7 @@ public class AccelAsphalt : MonoBehaviour {
 	
 	}
 
-    void onCollisionEnter(Collision col)
+    void OnCollisionEnter(Collision col)
     {
         if (!isColliding && col.gameObject.tag == "Car") {
             gameObject.GetComponentInParent<PlayerCar>().velocity *= MULTIPLIER;
@@ -25,9 +25,8 @@ public class AccelAsphalt : MonoBehaviour {
         }
     }
 
-    void onCollisionExit(Collision col)
+    void OnCollisionExit(Collision col)
     {
         isColliding = false;
-        Debug.Log("Leaving collision");
     }
 }

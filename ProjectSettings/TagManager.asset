@@ -5,6 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - Asphalt
+  - Car
+  - BananaPeel
+  - Tree
+  - SpikeStrip
+  - Oil
+  - ScoreKeeper
+  - FinishLine
+  - Content
+  - LeftFence
+  - RightFence
   layers:
   - Default
   - TransparentFX
@@ -14,10 +24,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Car
+  - Sprites
+  - Fence
+  - Asphalt
   - 
   - 
   - 

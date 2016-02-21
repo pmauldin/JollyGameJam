@@ -217,7 +217,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: YOU'RE CAR OVERHEATED AND EXPLODED
+  m_Text: YOUR CAR OVERHEATED AND EXPLODED
 --- !u!222 &361208192
 CanvasRenderer:
   m_ObjectHideFlags: 0

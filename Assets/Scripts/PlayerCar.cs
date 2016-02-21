@@ -31,6 +31,16 @@ public class PlayerCar : MonoBehaviour {
     public float timeToExplode = 3;
     public UnityEngine.UI.Text timeMessage;
 
+    //fence collision related
+    bool fenceCollision = false;
+    bool leftFence = false;
+
+    //asphalt collision
+    bool onAsphalt = false;
+
+    // material for car
+    public Material mat;
+
     // Use this for initialization
     void Start () {
 		playerTransform = GetComponentInParent<Transform> ();
@@ -70,6 +80,8 @@ public class PlayerCar : MonoBehaviour {
 
         handleExplosion();
 
+
+
 	}
 
     void handleExplosion()
@@ -88,7 +100,38 @@ public class PlayerCar : MonoBehaviour {
         }
     }
 
-	void FixedUpdate() {
+    void OnTriggerEnter(Collider col)
+    {
+        if (!onAsphalt && col.gameObject.tag == "Asphalt")
+        {
+            onAsphalt = true;
+            acceleration*=3;
+        }
+
+        if (col.gameObject.tag == "LeftFence" || col.gameObject.tag == "RightFence")
+        {
+            Debug.Log("Colliding with " + col.gameObject.tag);
+            velocity.x = 0;
+            fenceCollision = true;
+            leftFence = col.gameObject.tag == "LeftFence";
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "Asphalt")
+        {
+            resetAcceleration();
+            onAsphalt = false;
+        }
+
+        if (col.gameObject.tag == "LeftFence" || col.gameObject.tag == "RightFence")
+        {
+            Debug.Log("Turning off fenceCollision");
+            fenceCollision = false;
+        }
+    }
+    void FixedUpdate() {
 		velocity.z += acceleration;
 		playerTransform.Translate (velocity.x * Time.deltaTime, velocity.y * Time.deltaTime, velocity.z * Time.deltaTime);
 
@@ -100,9 +143,9 @@ public class PlayerCar : MonoBehaviour {
 	}
 
 	void handleInput() {
-		if (Input.GetKey(KeyCode.LeftArrow)) {
+		if (Input.GetKey(KeyCode.LeftArrow) && !(fenceCollision && leftFence)) {
 			velocity.x = -sideSpeed;
-		} else if (Input.GetKey(KeyCode.RightArrow)) {
+		} else if (Input.GetKey(KeyCode.RightArrow) && !(fenceCollision && !leftFence)) {
 			velocity.x = sideSpeed;
 		} else {
 			velocity.x = 0;

@@ -13,13 +13,14 @@ public class CollisionHandler : MonoBehaviour {
 	bool slipping = false;
 	Vector3 newVector;
 	float magnitude;
-
-    const float ASPHALT_MULTIPLIER = 3;
+    Color carColor;
+    bool oiled = false;
 
 	// Use this for initialization
 	void Start () {
 		player = GetComponentInParent<PlayerCar> ();
 		this.collisionValues = createDict ();
+        carColor = player.mat.GetColor("_Color");
 	}
 	
 	// Update is called once per frame
@@ -54,21 +55,16 @@ public class CollisionHandler : MonoBehaviour {
 
 		if (col.gameObject.tag == "Oil") {
 			slipping = false;
-		}
-
-        if (col.gameObject.tag != "Asphalt")
-        {
-            Collider[] colliders = col.gameObject.GetComponentsInParent<Collider>();
-
-            foreach (Collider collider in colliders)
-            {
-                Physics.IgnoreCollision(collider, GetComponentInParent<Collider>());
-            }
+            oiled = true;
+            carColor = player.mat.GetColor("_Color");
+            player.mat.SetColor("_Color", Color.black);
         }
-        // debug
-        else
+
+        Collider[] colliders = col.gameObject.GetComponentsInParent<Collider>();
+
+        foreach (Collider collider in colliders)
         {
-            Debug.Log("Asphalt collision detected!!");
+            Physics.IgnoreCollision(collider, GetComponentInParent<Collider>());
         }
 
 		player.updateStats (col.gameObject.tag);
@@ -81,7 +77,6 @@ public class CollisionHandler : MonoBehaviour {
 
 		dict.Add ("Tree", getCollisionOptions (0.5f, 1.0f, 0.0f));
 		dict.Add ("SpikeStrip", getCollisionOptions (0.3f, 0.75f, 3.0f));
-        dict.Add("Asphalt", getCollisionOptions(1.0f, ASPHALT_MULTIPLIER, -1.0f)); // need to manually reset accel on collisionexit
 
 		return dict;
 	}
@@ -107,6 +102,11 @@ public class CollisionHandler : MonoBehaviour {
 		player.velocity.x = 0;
 		player.inputEnabled = true;
 		slipping = false;
+        if (oiled)
+        {
+            oiled = false;
+            player.mat.SetColor("_Color", carColor);
+        }
 	}
 
 	void beginSlip() {
