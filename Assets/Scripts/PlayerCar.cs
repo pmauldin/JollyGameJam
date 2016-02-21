@@ -24,7 +24,6 @@ public class PlayerCar : MonoBehaviour {
 	public bool inputEnabled;
 
 	PlayerStats stats;
-    //RotatableGuiItem needle;
 
 	// Use this for initialization
 	void Start () {
@@ -34,7 +33,6 @@ public class PlayerCar : MonoBehaviour {
 		initialPos = playerTransform.position;
 		inputEnabled = true;
 		stats = GetComponentInParent<PlayerStats> ();
-        //needle = GetComponent<>
 	}
 	
 	// Update is called once per frame
@@ -61,8 +59,6 @@ public class PlayerCar : MonoBehaviour {
 			playerTransform.position = pos;
 		}
 
-        // for speed needle
-        //Needle.angle = velocity.z * 10;
 	}
 
 	void FixedUpdate() {
