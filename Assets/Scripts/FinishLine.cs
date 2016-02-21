@@ -6,7 +6,7 @@ public class FinishLine : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col)
 	{
-		if (col.gameObject.tag == "FinishLine") {
+		if (col.gameObject.tag == "Car") {
 			Application.LoadLevel("LoserBoard");
 		}
 	}

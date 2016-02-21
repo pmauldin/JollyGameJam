@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/Menu.unity
   - enabled: 1
     path: Assets/NateScene.unity
+  - enabled: 1
+    path: Assets/LoserBoard.unity

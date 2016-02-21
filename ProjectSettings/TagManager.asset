@@ -9,6 +9,7 @@ TagManager:
   - Car
   - Tree
   - SpikeStrip
+  - FinishLine
   layers:
   - Default
   - TransparentFX
