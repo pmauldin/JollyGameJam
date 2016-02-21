@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class CollisionHandler : MonoBehaviour {
+public class FinishLine : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col)
 	{
