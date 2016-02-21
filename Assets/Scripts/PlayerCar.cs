@@ -19,12 +19,11 @@ public class PlayerCar : MonoBehaviour {
 	int jumpDirection = 1;
 	bool jumping = false;
 
-	Animation animation; 
+	public Animation animation; 
 
 	// Use this for initialization
 	void Start () {
 		transform = GetComponentInParent<Transform> ();
-		this.animation = GetComponentInParent<Animation> ();
 		acceleration = initialAcceleration;
 		velocity = new Vector3(0, 0, -initialVelocity);
 		initialPos = transform.position;
@@ -38,7 +37,8 @@ public class PlayerCar : MonoBehaviour {
 
 		if (jumping && transform.position.y < initialPos.y) {
 			jumping = false;
-//			this.animation.Play ("wobble");
+			Debug.Log (this.animation.name);
+			this.animation.Play ("wobble");
 			Vector3 pos = transform.position;
 			pos.y = initialPos.y;
 			transform.position = pos;

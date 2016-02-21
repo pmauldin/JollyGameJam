@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 495240}
   - 212: {fileID: 21284234}
-  - 114: {fileID: 11473000}
   - 65: {fileID: 6585420}
   - 54: {fileID: 5418198}
   m_Layer: 0
@@ -58,20 +57,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.65238726, y: 0.16536248, z: 0.3716962}
   m_Center: {x: 0.045321584, y: -0.07731879, z: -0.08584595}
---- !u!114 &11473000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c01197a4722d4400ca5bfb2a6ed55510, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VelocitySlow: 0.75
-  AccelSlow: 0.75
-  AccelSlowDuration: 3
 --- !u!212 &21284234
 SpriteRenderer:
   m_ObjectHideFlags: 1
