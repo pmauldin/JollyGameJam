@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PlayerCar : MonoBehaviour {
-	Transform transform;
+	Transform playerTransform;
 
 	public float initialAcceleration = 0.1f;
 	public float acceleration;
@@ -20,40 +20,46 @@ public class PlayerCar : MonoBehaviour {
 	bool jumping = false;
 
 	public Animation animation; 
+	public bool inputEnabled;
 
 	// Use this for initialization
 	void Start () {
-		transform = GetComponentInParent<Transform> ();
+		Debug.Log (this.animation.GetClip ("spin").averageDuration);
+		playerTransform = GetComponentInParent<Transform> ();
 		acceleration = initialAcceleration;
 		velocity = new Vector3(0, 0, -initialVelocity);
-		initialPos = transform.position;
+		initialPos = playerTransform.position;
+		inputEnabled = true;
 		Debug.Log("initialPos: " + initialPos);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		handleInput (); 
+		if (inputEnabled) {
+			handleInput (); 
+		}
+
 		handleAccelTime ();
 
-		if (jumping && transform.position.y < initialPos.y) {
+		if (jumping && playerTransform.position.y < initialPos.y) {
 			jumping = false;
 			Debug.Log (this.animation.name);
 			this.animation.Play ("wobble");
-			Vector3 pos = transform.position;
+			Vector3 pos = playerTransform.position;
 			pos.y = initialPos.y;
-			transform.position = pos;
+			playerTransform.position = pos;
 		}
 
-		if (loop && transform.position.z > 25) {
-			Vector3 pos = transform.position;
+		if (loop && playerTransform.position.z > 25) {
+			Vector3 pos = playerTransform.position;
 			pos.z = -36;
-			transform.position = pos;
+			playerTransform.position = pos;
 		}
 	}
 
 	void FixedUpdate() {
 		velocity.z += acceleration;
-		transform.Translate (velocity.x * Time.deltaTime, velocity.y * Time.deltaTime, velocity.z * Time.deltaTime);
+		playerTransform.Translate (velocity.x * Time.deltaTime, velocity.y * Time.deltaTime, velocity.z * Time.deltaTime);
 
 		if (jumping) {
 			jump ();
@@ -76,13 +82,13 @@ public class PlayerCar : MonoBehaviour {
 	}
 
 	void jump() {
-		if (jumpDirection == 1 && transform.position.y >= initialPos.y + maxJumpHeight) {
+		if (jumpDirection == 1 && playerTransform.position.y >= initialPos.y + maxJumpHeight) {
 			jumpDirection = -1;
 		}
 
-		Vector3 pos = transform.position;
+		Vector3 pos = playerTransform.position;
 		pos.y += jumpDirection * jumpSpeed * Time.deltaTime;
-		transform.position = pos;
+		playerTransform.position = pos;
 	}
 
 	void handleAccelTime() {

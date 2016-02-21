@@ -6,6 +6,14 @@ public class CollisionHandler : MonoBehaviour {
 	PlayerCar player;
 	Dictionary<string, List<float>> collisionValues;
 
+	float timer = 0;
+	float buffDuration = 0;
+	float slipTimer = 0;
+	bool buffEnabled = false;
+	bool slipping = false;
+	Vector3 newVector;
+	float magnitude;
+
 	// Use this for initialization
 	void Start () {
 		player = GetComponentInParent<PlayerCar> ();
@@ -14,7 +22,17 @@ public class CollisionHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (buffEnabled) {
+			timer += Time.deltaTime;
+
+			if (timer > buffDuration) {
+				disableBuffs ();
+			}
+		}
+
+		if (slipping) {
+			slip ();
+		}
 	}
 
 	void OnCollisionEnter(Collision col)
@@ -24,6 +42,24 @@ public class CollisionHandler : MonoBehaviour {
 			player.setVelocity (values [0]);
 			player.setAcceleration (values [1], values[2]);
 		}
+
+		if (col.gameObject.tag == "BananaPeel") {
+			beginSlip ();
+		} else if (col.gameObject.tag == "SpikeStrip" || col.gameObject.tag == "Oil") {
+			disableInput (1);
+		}
+
+		if (col.gameObject.tag == "Oil") {
+			slipping = false;
+		}
+
+		Collider[] colliders = col.gameObject.GetComponentsInParent<Collider> ();
+
+		foreach(Collider collider in colliders) {
+			Physics.IgnoreCollision (collider, GetComponentInParent<Collider>());
+		}
+
+		buffEnabled = true;
 	}
 
 	Dictionary<string, List<float>> createDict() {
@@ -31,7 +67,6 @@ public class CollisionHandler : MonoBehaviour {
 
 		dict.Add ("Tree", getCollisionOptions (0.5f, 1.0f, 0.0f));
 		dict.Add ("SpikeStrip", getCollisionOptions (0.3f, 0.75f, 3.0f));
-		dict.Add ("BananaPeel", getCollisionOptions (1.0f, 0.0f, 2.0f));
 
 		return dict;
 	}
@@ -44,5 +79,45 @@ public class CollisionHandler : MonoBehaviour {
 		x.Add (accelDuration);
 
 		return x;
+	}
+
+	void disableInput(float duration) {
+		player.inputEnabled = false;
+		timer = 0;
+		this.buffDuration = duration;
+	}
+
+	void disableBuffs() {
+		buffEnabled = false;
+		player.velocity.x = 0;
+		player.inputEnabled = true;
+		slipping = false;
+	}
+
+	void beginSlip() {
+		player.animation.Play ("spin");
+		disableInput (player.animation.GetClip ("spin").averageDuration);
+		player.setAcceleration (0, player.animation.GetClip ("spin").averageDuration);
+		slipping = true;
+
+		magnitude = player.velocity.magnitude;
+		float randomSpeed = (((float) Random.Range(-2000, 2000)) / 1000) * player.sideSpeed;
+		newVector = new Vector3(randomSpeed, 0, Mathf.Sqrt((magnitude * magnitude) - (randomSpeed * randomSpeed)));
+
+		slipTimer = 0;
+	}
+
+	void slip() {
+		slipTimer += Time.deltaTime;
+		float sign = newVector.x < 0 ? -1 : 1;
+		Vector3 direction = new Vector3 (sign * Mathf.Sin (5 * Mathf.PI * slipTimer), 0, calculateZ ());
+		Vector3 final = (direction + newVector.normalized).normalized * newVector.magnitude;
+
+		player.velocity = final;
+	}
+
+	float calculateZ() {
+		float sinResult = Mathf.Sin (5 * Mathf.PI * slipTimer);
+		return Mathf.Sqrt (1 - (sinResult * sinResult));
 	}
 }
