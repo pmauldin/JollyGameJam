@@ -30,7 +30,7 @@ public class CollisionHandler : MonoBehaviour {
 		Dictionary<string, List<float>> dict = new Dictionary<string, List<float>> ();
 
 		dict.Add ("Tree", getCollisionOptions (0.5f, 1, 0));
-		dict.Add ("SpikeStrip", getCollisionOptions (0.1f, 0.75f, 3.0f));
+		dict.Add ("SpikeStrip", getCollisionOptions (0.3f, 0.75f, 3.0f));
 
 		return dict;
 	}
