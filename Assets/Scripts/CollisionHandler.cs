@@ -14,6 +14,8 @@ public class CollisionHandler : MonoBehaviour {
 	Vector3 newVector;
 	float magnitude;
 
+    const float ASPHALT_MULTIPLIER = 3;
+
 	// Use this for initialization
 	void Start () {
 		player = GetComponentInParent<PlayerCar> ();
@@ -41,6 +43,7 @@ public class CollisionHandler : MonoBehaviour {
 			List<float> values = this.collisionValues[col.gameObject.tag];
 			player.setVelocity (values [0]);
 			player.setAcceleration (values [1], values[2]);
+            Debug.Log("Detected collision with " + col.gameObject.name);
 		}
 
 		if (col.gameObject.tag == "BananaPeel") {
@@ -53,11 +56,20 @@ public class CollisionHandler : MonoBehaviour {
 			slipping = false;
 		}
 
-		Collider[] colliders = col.gameObject.GetComponentsInParent<Collider> ();
+        if (col.gameObject.tag != "Asphalt")
+        {
+            Collider[] colliders = col.gameObject.GetComponentsInParent<Collider>();
 
-		foreach(Collider collider in colliders) {
-			Physics.IgnoreCollision (collider, GetComponentInParent<Collider>());
-		}
+            foreach (Collider collider in colliders)
+            {
+                Physics.IgnoreCollision(collider, GetComponentInParent<Collider>());
+            }
+        }
+        // debug
+        else
+        {
+            Debug.Log("Asphalt collision detected!!");
+        }
 
 		player.updateStats (col.gameObject.tag);
 
@@ -69,6 +81,7 @@ public class CollisionHandler : MonoBehaviour {
 
 		dict.Add ("Tree", getCollisionOptions (0.5f, 1.0f, 0.0f));
 		dict.Add ("SpikeStrip", getCollisionOptions (0.3f, 0.75f, 3.0f));
+        dict.Add("Asphalt", getCollisionOptions(1.0f, ASPHALT_MULTIPLIER, -1.0f)); // need to manually reset accel on collisionexit
 
 		return dict;
 	}
