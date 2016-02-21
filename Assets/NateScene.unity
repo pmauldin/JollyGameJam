@@ -28463,6 +28463,10 @@ Prefab:
       propertyPath: m_Size.y
       value: 5.04
       objectReference: {fileID: 0}
+    - target: {fileID: 146556, guid: 824fbb6e9617f4faaad6905d454777b5, type: 2}
+      propertyPath: m_TagString
+      value: FinishLine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 824fbb6e9617f4faaad6905d454777b5, type: 2}
   m_IsPrefabParent: 0
