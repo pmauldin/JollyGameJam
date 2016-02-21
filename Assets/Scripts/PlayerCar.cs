@@ -25,8 +25,14 @@ public class PlayerCar : MonoBehaviour {
 
 	PlayerStats stats;
 
-	// Use this for initialization
-	void Start () {
+    //explosion related
+    public RectTransform rTrans;
+    public float killingVelocity;
+    public float timeToExplode = 3;
+    public UnityEngine.UI.Text timeMessage;
+
+    // Use this for initialization
+    void Start () {
 		playerTransform = GetComponentInParent<Transform> ();
 		acceleration = initialAcceleration;
 		velocity = new Vector3(0, 0, -initialVelocity);
@@ -58,8 +64,28 @@ public class PlayerCar : MonoBehaviour {
 			pos.z = -36;
 			playerTransform.position = pos;
 		}
+        float t = Mathf.Clamp01(Mathf.InverseLerp(0, killingVelocity, velocity.z));
+
+        rTrans.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(150, 25, t));
+
+        handleExplosion();
 
 	}
+
+    void handleExplosion()
+    {
+        if (velocity.z >= killingVelocity)
+        {
+            timeMessage.text = "TIME TO EXPLODE " + timeToExplode;
+            timeToExplode -= Time.deltaTime;
+            if (timeToExplode <= 0) ;
+                
+        }
+        else {
+            timeToExplode = 3;
+            timeMessage.text = "";
+        }
+    }
 
 	void FixedUpdate() {
 		velocity.z += acceleration;
